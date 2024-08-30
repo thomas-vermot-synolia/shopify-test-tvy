@@ -1,0 +1,158 @@
+
+<mini-cart>
+    <opener class="header__icon header__icon--cart minicart-icon" >
+        {%- liquid
+            if cart == empty
+                render 'icon-cart-empty'
+            else
+                render 'icon-cart'
+            endif
+        -%}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+    {%- if cart != empty -%}
+        <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+                <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+        </div>
+        {%- endif -%}
+
+    </opener>
+
+    <modal style="display: none;">
+        {%- if cart != empty -%}
+            <div class="minicart-items">
+                {%- for item in cart.items -%}
+                    <div class="minicart-item">
+                        <div class="minicart-item-media">
+                            {% if item.image %}
+                                <img src="{{ item.image | image_url: width: 300 }}"
+                                     class="cart-item__image"
+                                     alt="{{ item.image.alt | escape }}"
+                                     loading="lazy"
+                                     width="150"
+                                     height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                                >
+                            {% endif %}
+                        </div>
+                        <div class="minicart-item-details">
+                            <a href="{{ item.url }}" class="cart-minicart-item-details-name h4 break">{{ item.product.title | escape }}</a>
+                            {%- if item.original_price != item.final_price -%}
+                                <div class="cart-item__discounted-prices">
+                              <span class="visually-hidden">
+                                {{ 'products.product.price.regular_price' | t }}
+                              </span>
+                                    <s class="cart-item__old-price product-option">
+                                        {{- item.original_price | money -}}
+                                    </s>
+                                    <span class="visually-hidden">
+                                {{ 'products.product.price.sale_price' | t }}
+                              </span>
+                                    <strong class="cart-item__final-price product-option">
+                                        {{ item.final_price | money }}
+                                    </strong>
+                                </div>
+                            {%- else -%}
+                                <div class="product-option">
+                                    {{ item.original_price | money }}
+                                </div>
+                            {%- endif -%}
+
+                            {%- if item.product.has_only_default_variant == false
+                            or item.properties.size != 0
+                            or item.selling_plan_allocation != null
+                            -%}
+                                <dl>
+                                    {%- if item.product.has_only_default_variant == false -%}
+                                        {%- for option in item.options_with_values -%}
+                                            <div class="product-option">
+                                                <dt>{{ option.name }}:</dt>
+                                                <dd>{{ option.value }}</dd>
+                                            </div>
+                                        {%- endfor -%}
+                                    {%- endif -%}
+
+                                    {%- for property in item.properties -%}
+                                        {%- assign property_first_char = property.first | slice: 0 -%}
+                                        {%- if property.last != blank and property_first_char != '_' -%}
+                                            <div class="product-option">
+                                                <dt>{{ property.first }}:</dt>
+                                                <dd>
+                                                    {%- if property.last contains '/uploads/' -%}
+                                                        <a href="{{ property.last }}" class="link" target="_blank">
+                                                            {{ property.last | split: '/' | last }}
+                                                        </a>
+                                                    {%- else -%}
+                                                        {{ property.last }}
+                                                    {%- endif -%}
+                                                </dd>
+                                            </div>
+                                        {%- endif -%}
+                                    {%- endfor -%}
+                                </dl>
+
+                                <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                            {%- endif -%}
+                        </div>
+                        <div class="minicart-item-quantity">
+                            *{{ item.quantity }}
+
+                            <div class="total">
+
+                                {%- if item.original_line_price != item.final_line_price -%}
+                                    <dl class="cart-item__discounted-prices">
+                                        <dt class="visually-hidden">
+                                            {{ 'products.product.price.regular_price' | t }}
+                                        </dt>
+                                        <dd>
+                                            <s class="cart-item__old-price price price--end">
+                                                {{ item.original_line_price | money }}
+                                            </s>
+                                        </dd>
+                                        <dt class="visually-hidden">
+                                            {{ 'products.product.price.sale_price' | t }}
+                                        </dt>
+                                        <dd class="price price--end">
+                                            {{ item.final_line_price | money }}
+                                        </dd>
+                                    </dl>
+                                {%- else -%}
+                                    <span class="price price--end">
+                                {{ item.original_line_price | money }}
+                              </span>
+                                {%- endif -%}
+
+                                {%- if item.variant.available and item.unit_price_measurement -%}
+                                    <div class="unit-price caption">
+                                        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                        {{ item.unit_price | money }}
+                                        <span aria-hidden="true">/</span>
+                                        <span class="visually-hidden"
+                                        >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                        >
+                                        {%- if item.unit_price_measurement.reference_value != 1 -%}
+                                            {{- item.unit_price_measurement.reference_value -}}
+                                        {%- endif -%}
+                                        {{ item.unit_price_measurement.reference_unit }}
+                                    </div>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+            <a href="{{ routes.cart_url }}" class="button">
+                GO TO CART
+            </a>
+        {% else %}
+            <h2>Il est vide, ton panier!</h2>
+        {%- endif -%}
+
+
+    </modal>
+</mini-cart>
+
+
+<script src="{{ 'mini-cart.js' | asset_url }}" defer="defer"></script>
+{{ 'minicart.css' | asset_url | stylesheet_tag }}

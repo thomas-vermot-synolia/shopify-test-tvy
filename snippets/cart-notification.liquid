@@ -34,7 +34,10 @@
           </svg>
         </button>
       </div>
-      <div id="cart-notification-product" class="cart-notification-product"></div>
+        <div style="color: blue">cart-notification.liquid</div>
+      <div id="cart-notification-product" class="cart-notification-product">
+          {% render 'cart-notification-products' %}
+      </div>
       <div class="cart-notification__links">
         <a
           href="{{ routes.cart_url }}"
