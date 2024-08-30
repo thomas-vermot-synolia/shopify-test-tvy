@@ -4,7 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bbbb3be-66ef-45be-bd2b-1fd0a572d5c6" name="Changes" comment="" />
+    <list default="true" id="9bbbb3be-66ef-45be-bd2b-1fd0a572d5c6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README_LOCAL.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/size-guide-modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snippets/size-guide-debug.liquid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snippets/size-guide.liquid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/metaobject/size_guide.liquid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/details-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/details-modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/quick-order-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/quick-order-list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/section-main-product.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/section-main-product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sections/footer-group.json" beforeDir="false" afterPath="$PROJECT_DIR$/sections/footer-group.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sections/header-group.json" beforeDir="false" afterPath="$PROJECT_DIR$/sections/header-group.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sections/header.liquid" beforeDir="false" afterPath="$PROJECT_DIR$/sections/header.liquid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sections/main-product.liquid" beforeDir="false" afterPath="$PROJECT_DIR$/sections/main-product.liquid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/404.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/404.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cart.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/account.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/activate_account.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/activate_account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/addresses.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/addresses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/login.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/login.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/order.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/order.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/register.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/register.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers/reset_password.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers/reset_password.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/list-collections.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list-collections.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/page.contact.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/page.contact.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/page.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/page.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/password.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/password.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,27 +54,32 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2kxd7MjI9ut8kmOOK5ukPM1lccC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/synbshop/public_html/_REPOS/shopify-test-tvy/snippets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/snippets" />
+      <recent name="$PROJECT_DIR$/templates/metaobject" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -45,8 +87,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PS-242.20224.361" />
-        <option value="bundled-php-predefined-a98d8de5180a-d6acee4cb394-com.jetbrains.php.sharedIndexes-PS-242.20224.361" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PS-242.20224.427" />
+        <option value="bundled-php-predefined-a98d8de5180a-d6acee4cb394-com.jetbrains.php.sharedIndexes-PS-242.20224.427" />
       </set>
     </attachedChunks>
   </component>
@@ -59,6 +101,12 @@
       <option name="presentableId" value="Default" />
       <updated>1724228993621</updated>
       <workItem from="1724228994628" duration="1125000" />
+      <workItem from="1724328642398" duration="10079000" />
+      <workItem from="1724740665510" duration="3163000" />
+      <workItem from="1724849264988" duration="7622000" />
+      <workItem from="1724914487538" duration="1974000" />
+      <workItem from="1724924382416" duration="14394000" />
+      <workItem from="1725000727431" duration="3701000" />
     </task>
     <servers />
   </component>

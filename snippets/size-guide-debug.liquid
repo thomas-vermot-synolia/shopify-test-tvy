@@ -1,0 +1,46 @@
+<div style="border: solid 4px blueviolet;">
+    <h1>size-guide.liquid</h1>
+
+    <div style="border: solid 1px red;">
+        <h2>Metaobet lié au produit?</h2>
+        <table>
+            <tr>
+                <td>{% raw %}product.metafields.custom{% endraw %}</td>
+                <td>{{ product.metafields.custom }}</td>
+            </tr>
+            <tr>
+                <td>{% raw %}product.metafields.custom.linked_size_guide{% endraw %}</td>
+                <td>{{ product.metafields.custom.linked_size_guide }}</td>
+            </tr>
+            <tr>
+                <td>{% raw %}render 'size-guide' with product.metafields.custom.linked_size_guide as size_guide{% endraw %}</td>
+                <td>{% render 'size-guide' with product.metafields.custom.linked_size_guide as size_guide %}</td>
+            </tr>
+            <tr>
+                <td>{% raw %}product.metafields.custom.linked_size_guide{% endraw %}</td>
+                <td>{{ product.metafields.custom.linked_size_guide }}</td>
+            </tr>
+            <tr>
+                <td>{% raw %}{{ product.metafields.custom.linked_size_guide.value.intro }}{% endraw %}</td>
+                <td><strong>{{ product.metafields.custom.linked_size_guide.value.intro }}</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="background: #BBBBBB">
+        <h2>metaobjects globaux</h2>
+        <p>2: {{ shop.metaobjects.size_guide | jsonify }}</p>
+
+
+        <p>Il y a {{ shop.metaobjects.size_guide.values_count }} size guides  GLOBAUX:</p>
+        {%- for guide in shop.metaobjects.size_guide.values -%}
+            <p>
+                system id: {{ guide.system.id }}<br/>
+                system type: {{ guide.system.type }}<br/>
+                system handle: {{ guide.system.handle }}<br/>
+                system url: {{ guide.system.url }}<br/>
+                intro: {{ guide.intro }}<br/>
+            </p>
+        {% endfor %}
+    </div>
+</div>

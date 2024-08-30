@@ -1,0 +1,11 @@
+<div style="border: solid 4px blueviolet;">
+    <size-guide-modal>
+        <opener><button class="button">OPEN</button></opener>
+        <modal>
+            <h1>size-guide-with-modal.liquid</h1>
+            <p><strong>Intro?</strong>{{ product.metafields.custom.linked_size_guide.value.intro }}</p>
+        </modal>
+    </size-guide-modal>
+</div>
+
+<script src="{{ 'size-guide-modal.js' | asset_url }}" defer="defer"></script>

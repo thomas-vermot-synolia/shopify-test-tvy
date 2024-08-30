@@ -31,9 +31,12 @@ product-info {
     padding-right: var(--media-shadow-horizontal-offset);
   }
 
+  /*.product__media-wrapper { width: 50px !important;}*/
   .product__info-wrapper {
     padding: 0 0 0 5rem;
+      /*max-width: 100% !important; width: 100% !important; flex-grow: 100 !important; order: 1 !important;*/
   }
+  /*.product__info-container { max-width: 100% !important;width: 100% !important;}*/
 
   .product__info-wrapper--extra-padding {
     padding: 0 0 0 8rem;
@@ -1475,4 +1478,14 @@ a.product__text {
   .recipient-form > input[type='checkbox']:checked + label .icon-checkmark {
     border: none;
   }
+}
+
+/* SIZE GUIDE STYLE */
+size-guide-modal modal {
+    display: none;
+}
+size-guide-modal modal[open] {
+    display: block;
+    opacity: 1;
+    background: greenyellow;
 }

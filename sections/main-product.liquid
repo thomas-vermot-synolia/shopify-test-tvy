@@ -9,7 +9,28 @@
     data-zoom-on-hover
   {% endif %}
 >
-    <pre style="white-space:break-spaces; border: solid 1px red;">{{ product.metafields |  jsonify }}</pre>
+    <p style="border: solid 1px blue;">
+        <strong>MetaField =</strong>
+        {{ product.metafields | jsonify }}
+    </p>
+    <p style="border: solid 1px green;">
+        <strong>MetaFields custom =</strong>
+        {{ product.metafields.custom }}
+    </p>
+    <p style="border: solid 1px orange;">
+        <strong>MetaFields test_data =</strong>
+        {{ product.metafields.test_data }}
+
+        <br/><br/>
+        <strong>Dimension snowboard_length =</strong>
+        {{ product.metafields.test_data.snowboard_length.value }}
+        {{ product.metafields.test_data.snowboard_length.unit }}
+
+        <br/><br/>
+        <strong>product type =</strong>
+        {{ product.type | jsonify }}<br/>
+        - {{ product.type.metafields | jsonify }}
+    </p>
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -75,10 +96,6 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-
-    
-
-    
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
@@ -90,7 +107,13 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-          {%- for block in section.blocks -%}
+            {% render 'size-guide-with-modal', product: product %}
+            {% comment %}{% render 'size-guide-debug', product: product %}{% endcomment %}
+
+            {%- for block in section.blocks -%}
+              <p style="color: hotpink;">
+                  Block {{ block.type }}: {{ block | jsonify }}
+              </p>
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
