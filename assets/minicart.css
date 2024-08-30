@@ -1,0 +1,20 @@
+mini-cart opener {
+    background: pink;
+    cursor: pointer;
+}
+
+mini-cart modal {
+
+    position: fixed;
+    background: #f0f0f0;
+    border: solid 2px black;
+    /*left: 100px;*/
+    top: 100px;
+    right: 100px;
+    min-height: 300px;
+}
+
+mini-cart modal .minicart-item {
+    display: flex;
+    gap: 15px;
+}

@@ -42,9 +42,11 @@ if (!customElements.get('product-form')) {
         }
         config.body = formData;
 
+        console.log('!!!!! productFrom.onSubmitHandlre A', {url: routes.cart_add_url, config });
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
+              console.log('!!!!! productFrom.onSubmitHandlre B', {response });
             if (response.status) {
               publish(PUB_SUB_EVENTS.cartError, {
                 source: 'product-form',

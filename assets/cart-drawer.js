@@ -71,7 +71,9 @@ class CartDrawer extends HTMLElement {
   }
 
   renderContents(parsedState) {
-    this.querySelector('.drawer__inner').classList.contains('is-empty') &&
+      console.log('!!!! cartDrawr.renderContenst', { parsedState })
+
+      this.querySelector('.drawer__inner').classList.contains('is-empty') &&
       this.querySelector('.drawer__inner').classList.remove('is-empty');
     this.productId = parsedState.id;
     this.getSectionsToRender().forEach((section) => {
@@ -79,6 +81,7 @@ class CartDrawer extends HTMLElement {
         ? document.querySelector(section.selector)
         : document.getElementById(section.id);
 
+      console.log('!!!! cartDrawr.renderContenst x', { sectionElement, section, parsedState, content: this.getSectionInnerHTML(parsedState.sections[section.id], section.selector) })
       if (!sectionElement) return;
       sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
     });

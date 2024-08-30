@@ -13,7 +13,9 @@ class CartNotification extends HTMLElement {
   }
 
   open() {
-    this.notification.classList.add('animate', 'active');
+      console.log('!!!! catrNotif.OPEN', {});
+      this.notification.classList.add('animate');
+      this.notification.classList.add('active');
 
     this.notification.addEventListener(
       'transitionend',
@@ -28,6 +30,7 @@ class CartNotification extends HTMLElement {
   }
 
   close() {
+      console.log('!!!! catrNotif.CLOSE', {});
     this.notification.classList.remove('active');
     document.body.removeEventListener('click', this.onBodyClick);
 
@@ -36,10 +39,12 @@ class CartNotification extends HTMLElement {
 
   renderContents(parsedState) {
     this.cartItemKey = parsedState.key;
+    console.log('!!!! catrNotif.renderContenst', { parsedState  });
     this.getSectionsToRender().forEach((section) => {
+        console.log('!!!! catrNotif.renderContenst x', section.id === "cart-notification-product", { section, parsedState, htmlshouldbe: parsedState.sections[section.id], });
       document.getElementById(section.id).innerHTML = this.getSectionInnerHTML(
         parsedState.sections[section.id],
-        section.selector
+        section.selector, section.id
       );
     });
 
@@ -51,7 +56,7 @@ class CartNotification extends HTMLElement {
     return [
       {
         id: 'cart-notification-product',
-        selector: `[id="cart-notification-product-${this.cartItemKey}"]`,
+        selector: '[id="shopify-section-cart-notification-product"]', // `[id="cart-notification-product-${this.cartItemKey}"]`,
       },
       {
         id: 'cart-notification-button',
@@ -62,8 +67,12 @@ class CartNotification extends HTMLElement {
     ];
   }
 
-  getSectionInnerHTML(html, selector = '.shopify-section') {
-    return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;
+  getSectionInnerHTML(html, selector = '.shopify-section', sectionIDTODELETE) {
+      const a = new DOMParser().parseFromString(html, 'text/html')
+      const b = a.querySelector(selector);
+    const result = b.innerHTML;
+      console.log('!!!!! catrNotif.getSectionInnerHTLM', sectionIDTODELETE, { html, selector, result, a, b });
+    return result;
   }
 
   handleBodyClick(evt) {
@@ -71,6 +80,8 @@ class CartNotification extends HTMLElement {
     if (target !== this.notification && !target.closest('cart-notification')) {
       const disclosure = target.closest('details-disclosure, header-menu');
       this.activeElement = disclosure ? disclosure.querySelector('summary') : null;
+
+        console.log('!!!! catrNotif.handlebodyclik', {});
       this.close();
     }
   }
