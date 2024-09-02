@@ -1,3 +1,5 @@
+const DetailsModal = customElements.get('details-modal');
+
 class PasswordModal extends DetailsModal {
   constructor() {
     super();

@@ -107,7 +107,8 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-            {% render 'size-guide-with-modal', product: product %}
+            {% comment %}{% render 'size-guide-with-modal', product: product %}{% endcomment %}
+            {% render 'size-guide-with-details-modal', product: product %}
             {% comment %}{% render 'size-guide-debug', product: product %}{% endcomment %}
 
             {%- for block in section.blocks -%}
