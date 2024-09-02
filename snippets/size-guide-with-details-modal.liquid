@@ -1,0 +1,30 @@
+<div class="size-guide-with-details-modal">
+    <details-modal>
+        <details>
+            <summary aria-haspopup="dialog">
+                <span class="button">Size guide</span>
+            </summary>
+
+            <div class="size-guide-details-modal modal__content gradient" style=""
+                 role="dialog"
+                 aria-modal="true"
+                 aria-label="{{ 'general.search.search' | t }}"
+            >
+                <h1>size-guide-with-details-modal.liquid</h1>
+                <p><strong>Intro?</strong>{{ product.metafields.custom.linked_size_guide.value.intro }}</p>
+
+                <button
+                        type="button"
+                        class="close-button modal__close-button link link--text focus-inset"
+                        aria-label="{{ 'accessibility.close' | t }}"
+                >
+                    <svg class="icon icon-close" aria-hidden="true" focusable="false">
+                        <use href="#icon-close">
+                    </svg>
+                </button>
+            </div>
+        </details>
+    </details-modal>
+</div>
+
+{{ 'size-guide.css' | asset_url | stylesheet_tag }}

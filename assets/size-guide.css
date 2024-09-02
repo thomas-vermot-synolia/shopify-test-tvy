@@ -1,0 +1,26 @@
+.size-guide-with-details-modal {
+    --color-background: 173, 255, 47;
+    --gradient-background: white;
+}
+
+.size-guide-details-modal {
+    position: fixed;
+    height: auto;
+    min-height: auto;
+    bottom: auto;
+    border: solid 1px black;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .5);
+
+    flex-direction: column;
+    padding: 15px;
+}
+
+.size-guide-details-modal .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+details .size-guide-details-modal {
+    position: fixed;
+}
