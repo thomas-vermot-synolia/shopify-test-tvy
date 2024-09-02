@@ -1,5 +1,12 @@
 {
   "sections": {
+    "test": {
+      "type": "custom-text",
+      "settings": {
+        "custom_text_title": "custom text title",
+        "custom_text_body": "<p>Defined in cart.json</p>"
+      }
+    },
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
@@ -50,6 +57,7 @@
   "order": [
     "cart-items",
     "cart-footer",
-    "featured-collection"
+    "featured-collection",
+    "test"
   ]
 }
