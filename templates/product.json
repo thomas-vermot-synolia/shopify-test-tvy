@@ -27,7 +27,7 @@
         "text_jkxHqw": {
           "type": "text",
           "settings": {
-            "text": "{{ product.metafields.test_data.snowboard_length | metafield_tag }}",
+            "text": "Size is: {{ product.metafields.test_data.snowboard_length | metafield_tag }}",
             "text_style": "body"
           }
         },
