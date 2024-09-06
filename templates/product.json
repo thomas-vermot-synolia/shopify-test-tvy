@@ -54,7 +54,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "square"
+            "swatch_shape": "none"
           }
         },
         "quantity_selector": {
