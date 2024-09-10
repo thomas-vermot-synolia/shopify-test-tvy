@@ -1051,16 +1051,29 @@ class SlideshowComponent extends SliderComponent {
 
 customElements.define('slideshow-component', SlideshowComponent);
 
+/**
+ * The variant-selects tag, that shows the inputs to select variant in product detail
+ * used in product-infos.js
+ */
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
   }
 
+    /**
+     * Automatically launched when component is "registered" in page
+     * Listen to "change" event
+     */
   connectedCallback() {
     this.addEventListener('change', (event) => {
       const target = this.getInputForEventTarget(event.target);
+      // Update metadata
       this.updateSelectionMetadata(event);
 
+      /**
+       * Publish event to let other components react to it
+       * Used in product-info.js
+       */
       publish(PUB_SUB_EVENTS.optionValueSelectionChange, {
         data: {
           event,
@@ -1074,17 +1087,22 @@ class VariantSelects extends HTMLElement {
   updateSelectionMetadata({ target }) {
     const { value, tagName } = target;
 
+    // If it is a <select> element that changed
     if (tagName === 'SELECT' && target.selectedOptions.length) {
+      // switch the "selected" <option>
       Array.from(target.options)
         .find((option) => option.getAttribute('selected'))
         .removeAttribute('selected');
       target.selectedOptions[0].setAttribute('selected', 'selected');
 
+      // Get corresponding swatch
       const swatchValue = target.selectedOptions[0].dataset.optionSwatchValue;
       const selectedDropdownSwatchValue = target
         .closest('.product-form__input')
         .querySelector('[data-selected-value] > .swatch');
       if (!selectedDropdownSwatchValue) return;
+
+      // Update (or reset) swatch display
       if (swatchValue) {
         selectedDropdownSwatchValue.style.setProperty('--swatch--background', swatchValue);
         selectedDropdownSwatchValue.classList.remove('swatch--unavailable');
@@ -1098,6 +1116,7 @@ class VariantSelects extends HTMLElement {
         target.selectedOptions[0].dataset.optionSwatchFocalPoint || 'unset'
       );
     } else if (tagName === 'INPUT' && target.type === 'radio') {
+        // If <input> or <radio>, update the value reminder?
       const selectedSwatchValue = target.closest(`.product-form__input`).querySelector('[data-selected-value]');
       if (selectedSwatchValue) selectedSwatchValue.innerHTML = value;
     }

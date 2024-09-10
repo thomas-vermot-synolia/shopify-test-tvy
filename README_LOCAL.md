@@ -51,6 +51,10 @@ Puis y aura plus qu'à aller sur http://127.0.0.1:9292
 
 ## Synchronisation thème 
 
+NOTE IMPORTANTE: J'ai installé l'app *Globo Mega Menu* (https://apps.shopify.com/globo-mega-menu?locale=fr&search_id=49450562-6b6d-4098-8a09-3e3bf787fef8&surface_detail=mega+menu&surface_inter_position=1&surface_intra_position=7&surface_type=search)
+et ça a mis à jour le code versionné sur github. Donc mon local a perdu la synchro.
+J'ai pu _rebaser_ et me débrouiller. Mais c'est un soucis à garder en tête sur un vrai projet
+
 ## metaobjects
 
 ### metaobjects du theme:
