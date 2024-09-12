@@ -112,9 +112,9 @@
             {% comment %}{% render 'size-guide-debug', product: product %}{% endcomment %}
 
             {%- for block in section.blocks -%}
-              <p style="color: hotpink;">
+              {% comment %}<p style="color: hotpink;">
                   Block {{ block.type }}: {{ block | jsonify }}
-              </p>
+              </p>{% endcomment %}
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
