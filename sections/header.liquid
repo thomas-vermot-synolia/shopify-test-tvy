@@ -274,7 +274,8 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      {% comment %}<a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+      {% comment %} NATIVE MINICART (cart-notification)
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
             render 'icon-cart-empty'
