@@ -1,7 +1,7 @@
 {% comment %}Duplicate from section/cart-notification-product.liquid{% endcomment %}
 {%- if cart != empty -%}
   {%- for item in cart.items -%}
-    <div id="cart-notification-product-{{ item.key }}" class="cart-item">
+    <div id="cart-notification-product-{{ item.key }}" class="cart-item" data-test="cart-notification-products.liquid">
       {%- if item.image -%}
         <div class="cart-notification-product__image global-media-settings">
             {% comment %}<div style="color: red;">cart-notification-product.liquid</div>{% endcomment %}
