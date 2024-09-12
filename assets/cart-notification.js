@@ -32,6 +32,8 @@ class CartNotification extends HTMLElement {
   close() {
       console.log('!!!! catrNotif.CLOSE', {});
     this.notification.classList.remove('active');
+    this.notification.classList.remove('add-confirmation-state');
+    this.querySelector(`.add-confirmation-product`).classList.remove('add-confirmation-product');
     document.body.removeEventListener('click', this.onBodyClick);
 
     removeTrapFocus(this.activeElement);
@@ -47,6 +49,10 @@ class CartNotification extends HTMLElement {
         section.selector, section.id
       );
     });
+
+    // Add class to show only the current product:
+    this.notification.classList.add('add-confirmation-state');
+    this.querySelector(`[id="cart-notification-product-${this.cartItemKey}"]`).classList.add('add-confirmation-product');
 
     if (this.header) this.header.reveal();
     this.open();
