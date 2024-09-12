@@ -60,16 +60,25 @@ if (!customElements.get('product-info')) {
         });
       }
 
+        /**
+         * Quand une option a été sélectionnée
+         */
       handleOptionValueChange({ data: { event, target, selectedOptionValues } }) {
+        // Si on n'a pas les infos nécessaires, on arrête
         if (!this.contains(event.target)) return;
 
+        // Désactiver le submit, et afficher message d'erreur (si il y a)
         this.resetProductFormState();
 
+        // On met à jour l'url de récupération des infos (info variant, plus précis que configurable)
         const productUrl = target.dataset.productUrl || this.pendingRequestUrl || this.dataset.url;
         this.pendingRequestUrl = productUrl;
+
+        // On vérifie l'ampleur des changements à récupérer
         const shouldSwapProduct = this.dataset.url !== productUrl;
         const shouldFetchFullPage = this.dataset.updateUrl === 'true' && shouldSwapProduct;
 
+        // On met à jour le bloc/la page
         this.renderProductInfo({
           requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues, shouldFetchFullPage),
           targetId: target.id,
@@ -87,15 +96,20 @@ if (!customElements.get('product-info')) {
 
       handleSwapProduct(productUrl, updateFullPage) {
         return (html) => {
+          // Close the modal if we were in a modal
           this.productModal?.remove();
 
+          // Update "share" button (& browser history if config says so)
           const selector = updateFullPage ? "product-info[id^='MainProduct']" : 'product-info';
           const variant = this.getSelectedVariant(html.querySelector(selector));
           this.updateURL(productUrl, variant?.id);
 
+          // Update page content
           if (updateFullPage) {
+            // Update page title
             document.querySelector('head title').innerHTML = html.querySelector('head title').innerHTML;
 
+            // Update all <main> content
             HTMLUpdateUtility.viewTransition(
               document.querySelector('main'),
               html.querySelector('main'),
@@ -103,6 +117,7 @@ if (!customElements.get('product-info')) {
               this.postProcessHtmlCallbacks
             );
           } else {
+            // Update only this component (<product-info>)
             HTMLUpdateUtility.viewTransition(
               this,
               html.querySelector('product-info'),
@@ -154,6 +169,10 @@ if (!customElements.get('product-info')) {
         return `${url}?${params.join('&')}`;
       }
 
+      /**
+       * Update <variant-selects>
+       * @param html
+       */
       updateOptionValues(html) {
         const variantSelects = html.querySelector('variant-selects');
         if (variantSelects) {
@@ -163,20 +182,26 @@ if (!customElements.get('product-info')) {
 
       handleUpdateProductInfo(productUrl) {
         return (html) => {
+          // get variant
           const variant = this.getSelectedVariant(html);
 
+          // update pickupAvailability, <variant-selects>, share/history,  variantId inputs
           this.pickupAvailability?.update(variant);
           this.updateOptionValues(html);
           this.updateURL(productUrl, variant?.id);
           this.updateVariantInputs(variant?.id);
 
+          // If there is no variant, Block 'add to cart' buttons and hide variant information elements
           if (!variant) {
             this.setUnavailable();
             return;
           }
 
+          // Update image
           this.updateMedia(html, variant?.featured_media?.id);
 
+
+          // Replace price, sku, inventory, volume, & unit price
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
             const destination = this.querySelector(`#${id}-${this.dataset.section}`);
@@ -192,15 +217,22 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('Volume');
           updateSourceFromDestination('Price-Per-Item', ({ classList }) => classList.contains('hidden'));
 
+          // Update quantity min/max rules & show them
           this.updateQuantityRules(this.sectionId, html);
           this.querySelector(`#Quantity-Rules-${this.dataset.section}`)?.classList.remove('hidden');
           this.querySelector(`#Volume-Note-${this.dataset.section}`)?.classList.remove('hidden');
 
+          // Update submit button (disabled/text status)
           this.productForm?.toggleSubmitButton(
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
             window.variantStrings.soldOut
           );
 
+          /**
+           * Dispatch variant change event. Listened by
+           * * <recipient-form> (recipient-form.js) => update field value
+           * * <price-per-item> (price-per-item.js) => upload prices
+           */
           publish(PUB_SUB_EVENTS.variantChange, {
             data: {
               sectionId: this.sectionId,
@@ -211,6 +243,10 @@ if (!customElements.get('product-info')) {
         };
       }
 
+      /**
+       * Update inputs for variant id
+       * @param variantId
+       */
       updateVariantInputs(variantId) {
         this.querySelectorAll(
           `#product-form-${this.dataset.section}, #product-form-installment-${this.dataset.section}`
@@ -221,6 +257,12 @@ if (!customElements.get('product-info')) {
         });
       }
 
+        /**
+         * Update the "share" button
+         * Update browser history if required
+         * @param url
+         * @param variantId
+         */
       updateURL(url, variantId) {
         this.querySelector('share-button')?.updateUrl(
           `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
@@ -230,6 +272,9 @@ if (!customElements.get('product-info')) {
         window.history.replaceState({}, '', `${url}${variantId ? `?variant=${variantId}` : ''}`);
       }
 
+      /**
+       * Block 'add to cart' buttons and hide variant information elements
+       */
       setUnavailable() {
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
 
@@ -311,6 +356,7 @@ if (!customElements.get('product-info')) {
       }
 
       setQuantityBoundries() {
+        // Get useful data
         const data = {
           cartQuantity: this.quantityInput.dataset.cartQuantity ? parseInt(this.quantityInput.dataset.cartQuantity) : 0,
           min: this.quantityInput.dataset.min ? parseInt(this.quantityInput.dataset.min) : 1,
@@ -318,6 +364,7 @@ if (!customElements.get('product-info')) {
           step: this.quantityInput.step ? parseInt(this.quantityInput.step) : 1,
         };
 
+        // Get min/max quantities
         let min = data.min;
         const max = data.max === null ? data.max : data.max - data.cartQuantity;
         if (max !== null) min = Math.min(min, max);
@@ -332,6 +379,7 @@ if (!customElements.get('product-info')) {
         }
         this.quantityInput.value = min;
 
+        // dispatch event (listened by <quantity-input> in global.js)
         publish(PUB_SUB_EVENTS.quantityUpdate, undefined);
       }
 
