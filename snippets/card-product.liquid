@@ -160,6 +160,9 @@
               {{ card_product.title | escape }}
             </a>
           </h3>
+            {% if card_product.metafields.custom.linked_size_guide %}
+            <p class="size-guide-intro">Size guide intro: {{ card_product.metafields.custom.linked_size_guide.value.intro }}</p>
+            {% endif %}
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
