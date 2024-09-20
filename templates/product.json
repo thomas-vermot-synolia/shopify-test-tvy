@@ -95,7 +95,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
-            "content": "",
+            "content": "<p>I am the row content<\/p>",
             "page": ""
           }
         },
