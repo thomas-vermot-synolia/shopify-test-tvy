@@ -31,6 +31,13 @@
             "text_style": "body"
           }
         },
+        "custom_liquid_DdQ4jN": {
+          "type": "custom_liquid",
+          "source": "{{ product.metafields.custom.linked_size_guide.value }}",
+          "settings": {
+            "custom_liquid": "<div>If there is a size guide, its intro will be shown here (B): \"{{ product.metafields.custom.linked_size_guide.value.intro }}\"<div>"
+          }
+        },
         "custom_liquid_qrfwKt": {
           "type": "custom_liquid",
           "source": "{{ product.metafields.custom.linked_size_guide.value }}",
@@ -88,7 +95,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
-            "content": "",
+            "content": "<p>I am the row content<\/p>",
             "page": ""
           }
         },
@@ -121,6 +128,7 @@
         "vendor",
         "title",
         "text_jkxHqw",
+        "custom_liquid_DdQ4jN",
         "custom_liquid_qrfwKt",
         "caption",
         "price",
