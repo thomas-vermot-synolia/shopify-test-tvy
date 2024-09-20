@@ -31,6 +31,12 @@
             "text_style": "body"
           }
         },
+        "custom_liquid_DdQ4jN": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "If there is a size guide, its intro will be shown here (B): \"{{ product.metafields.custom.linked_size_guide.value.intro | jsonify }}\""
+          }
+        },
         "custom_liquid_qrfwKt": {
           "type": "custom_liquid",
           "source": "{{ product.metafields.custom.linked_size_guide.value }}",
@@ -121,6 +127,7 @@
         "vendor",
         "title",
         "text_jkxHqw",
+        "custom_liquid_DdQ4jN",
         "custom_liquid_qrfwKt",
         "caption",
         "price",
