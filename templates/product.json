@@ -35,7 +35,7 @@
           "type": "custom_liquid",
           "source": "{{ product.metafields.custom.linked_size_guide.value }}",
           "settings": {
-            "custom_liquid": ""
+            "custom_liquid": "If there is a size guide, its intro will be shown here: \"{{ product.metafields.custom.linked_size_guide.value.intro | jsonify }}\""
           }
         },
         "caption": {
