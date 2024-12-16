@@ -9,9 +9,13 @@
     data-zoom-on-hover
   {% endif %}
 >
+    <h1>ICI</h1>
     <p style="border: solid 1px blue;">
-        <strong>MetaField =</strong>
-        {{ product.metafields | jsonify }}
+        {% for link in linklists.main-menu.links %}
+            {{ link.title }}
+        {% endfor %}
+        {% comment %}<strong>MetaField =</strong>
+        {{ product.metafields | jsonify }}{% endcomment %}
     </p>
     <p style="border: solid 1px green;">
         <strong>MetaFields custom =</strong>

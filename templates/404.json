@@ -1,10 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "test": {
+      "type": "custom-text",
+      "settings": {
+        "custom_text_title": "custom text title!!",
+        "custom_text_body": "<p>Defined in 404.json (I swear)</p>"
+      }
+    },
+    "test-table": {
+      "type": "custom-table",
+      "blocks": {
+        "custom_table_line_w7QhdN": {
+          "type": "custom_table_line",
+          "settings": {
+            "custom_table_line_text": "custom table line deft text 1111"
+          }
+        },
+        "custom_table_line_w7QhdO": {
+          "type": "custom_table_line",
+          "settings": {
+            "custom_table_line_text": "custom table line deft text 2222"
+          }
+        }
+      },
+      "block_order": [
+        "custom_table_line_w7QhdN",
+        "custom_table_line_w7QhdO"
+      ],
+      "custom_css": [],
+      "settings": {
+        "custom_table_title": "This is the table title"
+      }
+    },
     "main": {
-      "type": "main-404"
+      "type": "main-404",
+      "settings": {}
     }
   },
   "order": [
+    "test",
+    "test-table",
     "main"
   ]
 }

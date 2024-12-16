@@ -255,12 +255,20 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "test": {
+      "type": "custom-text",
+      "settings": {
+        "custom_text_title": "custom text title!!",
+        "custom_text_body": "<p>Defined in product.json (I swear)<\/p>"
+      }
     }
   },
   "order": [
     "main",
     "image-with-text",
     "multicolumn",
-    "related-products"
+    "related-products",
+    "test"
   ]
 }

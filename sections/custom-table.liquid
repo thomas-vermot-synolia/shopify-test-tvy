@@ -1,0 +1,46 @@
+<h2 class="custom-table-section">
+    <h1>Custom-table.liquid is here</h1>
+    <h2>a: {{ section.settings | json }}</h2>
+    <h2>b: {{ section.settings.custom_table_title | json }}</h2>
+    <h2>d: {{ section.blocks | size }}</h2>
+    <h2>e: {{ section.blocks.custom_table_line | json }}</h2>
+    <h2>f: {{ section.blocks.custom_table_line.name | json }}</h2>
+    <ul>
+
+        {%- for block in section.blocks -%}
+        <li>
+            type: {{ block.type | json }}<br/>
+            id: {{ block.id | json }}<br/>
+            settings.custom_table_line_text: {{ block.settings.custom_table_line_text | json }}<br/>
+        </li>
+        {%- endfor -%}
+    </ul>
+</div>
+{% schema %}
+{
+  "name": "Custom table",
+  "settings": [
+    {
+      "id": "custom_table_title",
+      "type": "text",
+      "label": "Table box heading",
+      "default": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "custom_table_line",
+      "type": "custom_table_line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "custom_table_line_text",
+          "label": "custom table line text",
+          "default": "custom table line deft text",
+          "info": "custom table line deft info"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
