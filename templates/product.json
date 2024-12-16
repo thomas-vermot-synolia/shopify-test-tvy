@@ -273,11 +273,19 @@
           "settings": {
             "custom_table_line_text": "custom table line deft text 2222"
           }
+        },
+        "single_line_text_field_3rmTXw": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Longueur de la planche à neige",
+            "text": "{{ product.metafields.test_data.snowboard_length | metafield_text }}"
+          }
         }
       },
       "block_order": [
         "custom_table_line_w7QhdN",
-        "custom_table_line_w7QhdO"
+        "custom_table_line_w7QhdO",
+        "single_line_text_field_3rmTXw"
       ],
       "custom_css": [],
       "settings": {
