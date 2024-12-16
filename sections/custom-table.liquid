@@ -8,11 +8,20 @@
     <ul>
 
         {%- for block in section.blocks -%}
-        <li>
-            type: {{ block.type | json }}<br/>
-            id: {{ block.id | json }}<br/>
-            settings.custom_table_line_text: {{ block.settings.custom_table_line_text | json }}<br/>
-        </li>
+            {% if block.type == 'custom_table_line' %}
+                <li>
+                    type: {{ block.type | json }}<br/>
+                    id: {{ block.id | json }}<br/>
+                    settings.custom_table_line_text: {{ block.settings.custom_table_line_text | json }}<br/>
+                </li>
+            {% else %}
+                <li>
+                    type: {{ block.type | json }}<br/>
+                    id: {{ block.id | json }}<br/>
+                    C'est pas un single line => {{ block.settings | json }}<br/>
+                </li>
+
+            {% endif %}
         {%- endfor -%}
     </ul>
 </div>
@@ -38,6 +47,22 @@
           "label": "custom table line text",
           "default": "custom table line deft text",
           "info": "custom table line deft info"
+        }
+      ]
+    },
+    {
+      "type": "single_line_text_field",
+      "name": "line_metafield",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title of the line"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text of the line"
         }
       ]
     }
