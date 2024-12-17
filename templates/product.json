@@ -262,34 +262,88 @@
     "test-table": {
       "type": "custom-table",
       "blocks": {
-        "custom_table_line_w7QhdN": {
-          "type": "custom_table_line",
-          "settings": {
-            "custom_table_line_text": "Snowboard length:{{ product.metafields.test_data.snowboard_length | metafield_text }}"
-          }
-        },
-        "custom_table_line_w7QhdO": {
-          "type": "custom_table_line",
-          "settings": {
-            "custom_table_line_text": "custom table line deft text 2222"
-          }
-        },
         "single_line_text_field_3rmTXw": {
           "type": "single_line_text_field",
           "settings": {
             "title": "Longueur de la planche à neige",
             "text": "{{ product.metafields.test_data.snowboard_length | metafield_text }}"
           }
+        },
+        "single_line_text_field_3rmTXx": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Autre ligne",
+            "text": "avec autre valeur"
+          }
+        },
+        "single_line_text_field_3rmTXy": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Encore une Autre ligne",
+            "text": ""
+          }
+        },
+        "single_line_text_field_3rmTXz": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "",
+            "text": "Valeur seule"
+          }
         }
       },
       "block_order": [
-        "custom_table_line_w7QhdN",
-        "custom_table_line_w7QhdO",
-        "single_line_text_field_3rmTXw"
+        "single_line_text_field_3rmTXw",
+        "single_line_text_field_3rmTXx",
+        "single_line_text_field_3rmTXy",
+        "single_line_text_field_3rmTXz"
       ],
       "custom_css": [],
       "settings": {
         "custom_table_title": "This is the table title"
+      }
+    },
+    "test-tableb": {
+      "type": "custom-table",
+      "blocks": {
+        "single_line_text_field_3rmTXw": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Longueur de la planche à neige",
+            "text": "{{ product.metafields.test_data.snowboard_length | metafield_text }}"
+          }
+        },
+        "single_line_text_field_3rmTXx": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Autre ligne",
+            "text": "avec autre valeur"
+          }
+        },
+        "single_line_text_field_3rmTXy": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "Encore une Autre ligne",
+            "text": ""
+          }
+        },
+        "single_line_text_field_3rmTXz": {
+          "type": "single_line_text_field",
+          "settings": {
+            "title": "",
+            "text": "Valeur seule"
+          }
+        }
+      },
+      "block_order": [
+        "single_line_text_field_3rmTXw",
+        "single_line_text_field_3rmTXx",
+        "single_line_text_field_3rmTXy",
+        "single_line_text_field_3rmTXz"
+      ],
+      "custom_css": [],
+      "settings": {
+        "custom_table_title": "Une table avec aucune valeur",
+        "hide_empty_lines": true
       }
     }
   },
@@ -299,6 +353,7 @@
     "multicolumn",
     "related-products",
     "test",
-    "test-table"
+    "test-table",
+    "test-tableb"
   ]
 }

@@ -1,30 +1,42 @@
-<h2 class="custom-table-section">
-    <h1>Custom-table.liquid is here</h1>
-    <h2>a: {{ section.settings | json }}</h2>
-    <h2>b: {{ section.settings.custom_table_title | json }}</h2>
-    <h2>d: {{ section.blocks | size }}</h2>
-    <h2>e: {{ section.blocks.custom_table_line | json }}</h2>
-    <h2>f: {{ section.blocks.custom_table_line.name | json }}</h2>
-    <ul>
+{% # Test if the table has filled lines (& not 'hide_empty_lines' config) %}
+{% assign show_table = false %}
+{% if section.settings.hide_empty_lines == true %}
+    {%- for block in section.blocks -%}
+        {% if block.type == 'single_line_text_field' and block.settings.text.size > 0 %}
+            {% assign show_table = true %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% assign show_table = true %}
+{% endif %}
 
+{% if show_table == true %}
+{%- style -%}
+    .custom-table-section-{{ section.id }} {
+        margin-bottom: 30px;
+    }
+    .custom-table-section-{{ section.id }} table {
+    width: 100%;
+    }
+{%- endstyle -%}
+
+<div class="page-width custom-table-section-{{ section.id }}">
+    <table>
+        <thead><tr><th colspan="2">{{ section.settings.custom_table_title }}</th></tr></thead>
+        <tbody>
         {%- for block in section.blocks -%}
-            {% if block.type == 'custom_table_line' %}
-                <li>
-                    type: {{ block.type | json }}<br/>
-                    id: {{ block.id | json }}<br/>
-                    settings.custom_table_line_text: {{ block.settings.custom_table_line_text | json }}<br/>
-                </li>
-            {% else %}
-                <li>
-                    type: {{ block.type | json }}<br/>
-                    id: {{ block.id | json }}<br/>
-                    C'est pas un single line => {{ block.settings | json }}<br/>
-                </li>
-
+            {% if block.settings.text != '' or section.settings.hide_empty_lines == false %}
+            <tr>
+                <th>{{ block.settings.title }}</th>
+                <td>{{ block.settings.text }}</td>
+            </tr>
             {% endif %}
-        {%- endfor -%}
-    </ul>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "Custom table",
@@ -34,22 +46,15 @@
       "type": "text",
       "label": "Table box heading",
       "default": "Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_empty_lines",
+      "default": false,
+      "label": "Hide empty lines"
     }
   ],
   "blocks": [
-    {
-      "name": "custom_table_line",
-      "type": "custom_table_line",
-      "settings": [
-        {
-          "type": "text",
-          "id": "custom_table_line_text",
-          "label": "custom table line text",
-          "default": "custom table line deft text",
-          "info": "custom table line deft info"
-        }
-      ]
-    },
     {
       "type": "single_line_text_field",
       "name": "line_metafield",
