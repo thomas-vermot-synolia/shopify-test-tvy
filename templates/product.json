@@ -9,6 +9,46 @@
  */
 {
   "sections": {
+    "product-customfields-tables": {
+      "type": "product-customfields-tables",
+      "blocks": {
+        "column_feRwd7": {
+          "type": "column",
+          "settings": {
+            "title": "Colonne 1",
+            "product_custom_fields": "test_data.snowboard_length | La longueur du snowboard\ncustom.has_wifi | Le snowboard a le wifi?",
+            "product_custom_fields_b": "<p>label! | {{ section.settings.product.metafields.test_data.snowboard_length | metafield_tag }}</p><p>label2 | {{ section.settings.product.title }}</p>",
+            "product_custom_fields_c": "Y a le wifi? ; {{ product.metafields.custom.has_wifi }}\nsnow length ; {{ product.metafields.test_data.snowboard_length.value }}"
+          }
+        },
+        "column_feRwd8": {
+          "type": "column",
+          "settings": {
+            "title": "Colonne 2",
+            "product_custom_fields": "",
+            "product_custom_fields_b": "",
+            "product_custom_fields_c": "Y a le wifi? ; {{ product.metafields.custom.has_wifi }}\nsnow length ; {{ product.metafields.test_data.snowboard_length.value }}"
+          }
+        },
+        "column_feRwd9": {
+          "type": "column",
+          "settings": {
+            "title": "Colonne 3",
+            "product_custom_fields": "",
+            "product_custom_fields_b": "",
+            "product_custom_fields_c": "Titre ; {{ product.title }}\nY a le wifi? ; {{ product.metafields.custom.has_wifi }}\nsnow length ; {{ product.metafields.test_data.snowboard_length.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "column_feRwd7",
+        "column_feRwd8",
+        "column_feRwd9"
+      ],
+      "settings": {
+        "product": "{{ product }}"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -299,7 +339,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "custom_table_title": "This is the table title"
+        "custom_table_title": "This is the table title",
+        "hide_empty_lines": false
       }
     },
     "test-tableb": {
@@ -354,6 +395,7 @@
     "related-products",
     "test",
     "test-table",
-    "test-tableb"
+    "test-tableb",
+    "product-customfields-tables"
   ]
 }

@@ -1,0 +1,141 @@
+{%- ##########################################################################
+# Label: Product
+# Returns: A product object or blank(if no selection has been made)
+# Product Properties: https://shopify.dev/api/liquid/objects#product
+########################################################################## -%}
+{%- assign product = section.settings.product -%}
+{% comment %}{{ product.title }}
+{{ product.description }}{% endcomment %}
+
+<div class="page-width">
+    <ul class="multicolumn-list contains-content-container grid">
+{%- for block in section.blocks -%}
+    <li class="multicolumn-list__item grid__item center scroll-trigger animate--slide-in">
+    {%- case block.type -%}
+        {%- when 'column' -%}
+            <h2>{{ block.settings.title }}</h2>
+            <div>
+                {%- capture line_c_prepare -%}{{ block.settings.product_custom_fields_c| replace: "
+", ";;;"  }}{%- endcapture %}
+                {% assign lines_c = line_c_prepare | split: ';;;' %}
+                <table style="width: 100%">
+                    <tbody>
+                    {%- for line in lines_c -%}
+                        <tr>
+                        {% assign cell = line | split: ';' %}
+                        <th>{{ cell[0] }}</th>
+                        <td>{{ cell[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% comment %}<div style="border: solid 1px orange; display: none;">
+                {{ block.settings.product_custom_fields_b |  json }}
+                <br/>
+                <br/>
+                {{ block.settings.product_custom_fields_b | split: '</p>' |  json }}
+                <br/>
+                <br/>
+                {{ block.settings.product_custom_fields_b }}
+            </div>{% endcomment %}
+
+            {% comment %}{% assign lines = block.settings.product_custom_fields | split: '
+' %}
+            <table>
+                <tbody>
+                    {%- for line in lines -%}
+                    <tr>
+                        {% assign cell = line | split: '|' %}
+                        <th>{{ cell[1] }}</th>
+                        <td>
+                            {% comment %}CONFIG: {{ cell[0] }}<br/>
+                            ATTENDU: {{ product.metafields.test_data.snowboard_length.value }}<br/>
+                            {% assign test = 'value' %}
+                            RESULT:{{ product.metafields.test_data.snowboard_length.test | jsonify }}<br/>
+
+                            TEST?: {{ product.metafields.test_data |  inspect }}<br/>
+                            TEST?B: {{ product.metafields['test_data']['snowboard_length']['value'] }}<br/>
+                            TEST?C: {{ product.metafields['test_data.snowboard_length']['value'] }}<br/>{% endcomment %}
+
+                            {% assign accessors = cell[0] | strip | split: '.' %}
+                            {% assign value = product.metafields %}
+                            {% comment %}...A: START => {{ value | inspect }}<br/>{% endcomment %}
+                            {%- for accessor in accessors -%}
+                                {% assign value = value[accessor] %}
+                                {% comment %}...: {{ accessor | json }} => {{ value | inspect }}<br/>{% endcomment %}
+                            {% endfor %}
+                            {% assign value = value.value %}
+                            {% comment %}...Z: value => {{ value }}<br/>{% endcomment %}
+                            {{ value }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>{% endcomment %}
+            {%- ##########################################################################
+      # Label: Product custom fields
+      # Returns: a string or an empty object(if nothing has been entered)
+      # Filters: https://shopify.dev/api/liquid/objects#string
+      ########################################################################## -%}
+
+            {% comment %}{{ block.settings.product_custom_fields }}{% endcomment %}
+
+    {%- endcase -%}
+    </li>
+{%- endfor -%}
+
+    </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Code In Shopify Section",
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["*"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Column",
+      "type": "column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "product_custom_fields",
+          "label": "Product custom fields",
+          "info": "with format \"code | label\""
+        },
+        {
+          "type": "richtext",
+          "id": "product_custom_fields_b",
+          "label": "product_custom_fields_b"
+        },
+        {
+          "type": "liquid",
+          "id": "product_custom_fields_c",
+          "label": "product_custom_fields_c"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Code In Shopify Section"
+    }
+  ]
+}
+{% endschema %}
