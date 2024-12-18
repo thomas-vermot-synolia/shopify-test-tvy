@@ -1,0 +1,49 @@
+<div style="border: solid 2px darkolivegreen;">
+    <p> Sub collections build from "category-hierarchy" menu (& current path):</p>
+
+    <ul>
+    {% for link in linklists.category-hierarchy.links %}
+        {% if link.url == request.path %}
+            <li>
+                {{ link.title }} (current)
+
+                <ul>
+                    {% for sublink in link.links %}
+                        <li>
+                            <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                            <ul>
+                                {% for subsublink in sublink.links %}
+                                    <li><a href="{{ subsublink.url }}">{{ subsublink.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% break %}
+        {% endif %}
+
+        {% for sublink in link.links %}
+            {% if sublink.url == request.path %}
+                <li>
+                    {{ sublink.title }} (current)
+
+                    <ul>
+                        {% for subsublink in sublink.links %}
+                            <li><a href="{{ subsublink.url }}">{{ subsublink.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% break %}
+            {% endif %}
+
+            {% for subsublink in sublink.links %}
+                {% if subsublink.url == request.path %}
+                    <li>{{ subsublink.title }} (current)</li>
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+</div>

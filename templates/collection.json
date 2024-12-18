@@ -1,5 +1,11 @@
 {
   "sections": {
+    "collection-breadcrumb-from-menu": {
+      "type": "collection-breadcrumb-from-menu"
+    },
+    "collection-children-from-menu": {
+      "type": "collection-children-from-menu"
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -27,6 +33,8 @@
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "collection-breadcrumb-from-menu",
+    "collection-children-from-menu"
   ]
 }

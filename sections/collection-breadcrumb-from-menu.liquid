@@ -1,0 +1,26 @@
+{% assign output = '' %}
+<div style="border: solid 1px green;">
+    <p> Breadcrumb build from "category-hierarchy" menu (& current path):
+    {% for link in linklists.category-hierarchy.links %}
+        {% if link.url == request.path %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {% break %}
+        {% endif %}
+        {% for sublink in link.links %}
+            {% if sublink.url == request.path %}
+                <a href="{{ link.url }}">{{ link.title }}</a> >
+                <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                {% break %}
+            {% endif %}
+            {% for subsublink in sublink.links %}
+                {% if subsublink.url == request.path %}
+                    <a href="{{ link.url }}">{{ link.title }}</a> >
+                    <a href="{{ sublink.url }}">{{ sublink.title }}</a> >
+                    <a href="{{ subsublink.url }}">{{ subsublink.title }}</a>
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    </p>
+</div>
