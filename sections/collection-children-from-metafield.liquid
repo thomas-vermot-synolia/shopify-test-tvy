@@ -1,0 +1,16 @@
+<div style="border: solid 1px firebrick">
+    <p>Collection menu made of collection's "children" metafield</p>
+    <p style="color: pink;">{{ collection.metafields.custom.children.value | json }}</p>
+
+
+    <strong>Current: {{ collection.title }} ({{ collection.id | json }})</strong>
+    {% assign dones = collection.id | split: ',' %}
+
+    <ul>
+        {% for child in collection.metafields.custom.children.value %}
+            <li>
+                {% render 'collection-children-from-metafield-subcomponent', dones: dones, collec: child %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

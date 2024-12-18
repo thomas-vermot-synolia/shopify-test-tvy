@@ -1,0 +1,10 @@
+{% assign parent = collec.metafields.custom.parent.value %}
+{% assign parentId = parent.id | append: '' %}
+
+{% unless parent == null or dones contains parentId %}
+    {% assign newDones = dones | join: ',' | append: "," | append: parentId | split: ',' %}
+    {% render 'collection-breadcrumb-from-metafield-subcomponent', dones: newDones, collec: parent %}
+    >
+{% endunless %}
+
+<a href="{{ collec.url }}" title="{{ collec.id }}">{{ collec.title }}</a>

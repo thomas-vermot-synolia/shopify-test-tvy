@@ -6,6 +6,12 @@
     "collection-children-from-menu": {
       "type": "collection-children-from-menu"
     },
+    "collection-breadcrumb-from-metafield": {
+      "type": "collection-breadcrumb-from-metafield"
+    },
+    "collection-children-from-metafield": {
+      "type": "collection-children-from-metafield"
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -35,6 +41,8 @@
     "banner",
     "product-grid",
     "collection-breadcrumb-from-menu",
-    "collection-children-from-menu"
+    "collection-children-from-menu",
+    "collection-children-from-metafield",
+    "collection-breadcrumb-from-metafield"
   ]
 }

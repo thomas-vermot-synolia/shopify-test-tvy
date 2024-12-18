@@ -1,0 +1,17 @@
+<a href="{{ collec.url }}"> {{ collec.title }}</a>
+
+{% for child in collec.metafields.custom.children.value %}
+
+    {% assign childId = child.id | append: '' %}
+
+    {% unless child == null or dones contains childId %}
+        {% assign newDones = dones | join: ',' | append: "," | append: childId | split: ',' %}
+        <ul>
+            <li>
+                {% render 'collection-children-from-metafield-subcomponent', dones: newDones, collec: child %}
+            </li>
+        </ul>
+    {% else %}
+        <strong style="color: red;">Child "{{ child.title }}" already shown ({{ child.id }})</strong>
+    {% endunless %}
+{% endfor %}

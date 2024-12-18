@@ -1,0 +1,15 @@
+<div style="border: solid 1px darkred">
+    <p>Collection breadcrumb made of "parent" metafield</p>
+    {% if collection.metafields.custom.parent.value == null %}
+    <span>(NO PARENT COLLECTION)</span>
+    >
+    <strong>{{ collection.title }}</strong>
+    {% else %}
+    {% assign parent = collection.metafields.custom.parent.value %}
+    {% assign dones = collection.id | split: ',' %}
+
+    {% render 'collection-breadcrumb-from-metafield-subcomponent', dones: dones, collec: parent %}
+    >
+    <strong>{{ collection.title }}</strong>
+    {% endif %}
+</div>
