@@ -20,13 +20,13 @@
       "type": "custom-table",
       "blocks": {
         "custom_table_line_w7QhdN": {
-          "type": "custom_table_line",
+          "type": "single_line_text_field",
           "settings": {
             "custom_table_line_text": "custom table line deft text 1111"
           }
         },
         "custom_table_line_w7QhdO": {
-          "type": "custom_table_line",
+          "type": "single_line_text_field",
           "settings": {
             "custom_table_line_text": "custom table line deft text 2222"
           }
