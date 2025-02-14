@@ -101,7 +101,7 @@
           "settings": {
             "heading": "{{ product.metafields.custom.metaobject_avec_page.value.title.value }}",
             "icon": "ruler",
-            "content": "{{ product.metafields.custom.metaobject_avec_page.value.content | metafield_tag }}",
+            "content": "<p>{{ product.metafields.custom.metaobject_avec_page.value.mini_content | metafield_tag }}</p>",
             "page": ""
           }
         },
