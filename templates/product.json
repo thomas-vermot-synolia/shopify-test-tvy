@@ -101,7 +101,7 @@
           "settings": {
             "heading": "{{ product.metafields.custom.metaobject_avec_page.value.title.value }}",
             "icon": "ruler",
-            "content": "<p>{{ product.metafields.custom.metaobject_avec_page.value.mini_content | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.metaobject_avec_page.value.mini_content | metafield_tag }}</p><p><a href=\"/pages/metaobject_avec_page/metaobject-avec-page-2\" title=\"Metaobject avec page 2\">Aller voir la page?</a></p>",
             "page": ""
           }
         },
