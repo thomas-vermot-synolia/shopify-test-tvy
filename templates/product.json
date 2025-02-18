@@ -98,7 +98,7 @@
         "custom_liquid_cH7rKX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<a href=\"{{product.metafields.custom.metaobject_b.value.title.value}}\">En savoir plus sur {{product.metafields.custom.metaobject_b.value.title.value}}?</a>"
+            "custom_liquid": "<a href=\"{{product.metafields.custom.metaobject_b.value.system.url}}\">En savoir plus sur {{product.metafields.custom.metaobject_b.value.title.value}}?</a>"
           }
         },
         "text_a3dP8E": {
