@@ -91,7 +91,7 @@
           "settings": {
             "heading": "{{ product.metafields.custom.metaobject_b.value.title.value }}",
             "icon": "truck",
-            "content": "<p>{{ product.metafields.custom.metaobject_b.value.content | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.metaobject_b.value.content | metafield_tag }}</p><p><a href=\"/pages/metaobject_b/jean-okhand\" title=\"Jean okhand\">Voir plus</a></p>",
             "page": ""
           }
         },
