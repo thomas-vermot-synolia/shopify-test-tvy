@@ -95,6 +95,19 @@
             "page": ""
           }
         },
+        "custom_liquid_cH7rKX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a href=\"{{product.metafields.custom.metaobject_b.value.title.value}}\">En savoir plus sur {{product.metafields.custom.metaobject_b.value.title.value}}</a>"
+          }
+        },
+        "text_a3dP8E": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "source": "{{ product.metafields.custom.metaobject_avec_page.value }}",
@@ -135,6 +148,8 @@
         "description",
         "collapsible-row-0",
         "collapsible-row-1",
+        "custom_liquid_cH7rKX",
+        "text_a3dP8E",
         "collapsible-row-2",
         "share",
         "collapsible-row-3"
